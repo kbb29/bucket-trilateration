@@ -16,7 +16,9 @@ var beaconPoints = utils.generateTrianglePoints(boundsCenter, 1300)
 const obfuscationBuckets = [[0, 500],[500, 1000],[1000, 2000],[2000, 5000],[5000, 10000],[10000, 20000],[20000, 50000],[50000, 100000],[100000, 200000],
 [200000, 500000],[500000, 1000000],[1000000, 2000000]]
 
-ml = new multilat.MultiLat(searchBounds, beaconPoints, obfuscationBuckets)
+//create the multilat object.  numPoints changes the size of the search grid:
+//      increasing numPoints improves accuracy, but slows down performance
+ml = new multilat.MultiLat(searchBounds, beaconPoints, obfuscationBuckets, {numPoints: 10000})
 
 //Make up some ranges, which in a real case would be returned from the service/api/whatever
 beaconLimits = [[1000, 2000],[2000,5000],[1000, 2000]]
@@ -39,7 +41,7 @@ console.log(`trilaterated again to ${JSON.stringify(centroid)}`)
 //you can change this behaviour by passing in a nullHandler in the options eg.
 //    centroid = ml.multilaterate(beacons, {nullHandler: function(beacons) {return utils.Centroid(somelat, somelon, someradius)}})
 beaconLimits = [[500, 1000],[500, 1000],[500, 1000]]
-beacons = beaconPoints.map((bp, i) => new utils.Beacon(bp.lat, bp.lon, beaconLimits[i]))
+beacons = beaconPoints.map((bp, i) => utils.BeaconFromPoint(bp, beaconLimits[i]))
 
 centroid = ml.multilaterate(beacons, {plotIntersection: {tag: `example-intersect-fail`}})
 console.log(`trilaterated without success to ${JSON.stringify(centroid)}`)
@@ -49,7 +51,7 @@ console.log(`trilaterated without success to ${JSON.stringify(centroid)}`)
 //constructing the MultiLat Object takes a while.  But afterwards, calls to multilaterate() are fast
 var beaconPoints = utils.generateHexagonPoints(boundsCenter, 1300)
 beaconPoints.push(boundsCenter)
-ml = new multilat.MultiLat(searchBounds, beaconPoints, obfuscationBuckets)
+ml = new multilat.MultiLat(searchBounds, beaconPoints, obfuscationBuckets, {numPoints: 10000})
 
 //Make up some ranges, which in a real case would be returned from the service/api/whatever
 beaconLimits = [[1000, 2000],[2000,5000],[1000, 2000],[1000, 2000],[1000, 2000],[500, 1000],[500,1000]]

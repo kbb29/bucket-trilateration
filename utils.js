@@ -49,12 +49,15 @@ Point.prototype.equalTo = function(other) {
     return this.lat == other.lat && this.lon == other.lon
 }
 
-
 var Beacon = function(lat, lon, limits) {
   this.point = new Point(lat, lon)
   this.limits = limits
   
   return this
+}
+
+const BeaconFromPoint = function(point, limits) {
+    return new Beacon(point.lat, point.lon, limits)
 }
 
 var Bounds = function(bottom, top, left, right) {
@@ -219,4 +222,4 @@ generateTrianglePoints,
 generateHexagonPoints,
 simulateServiceDistances,
 getBoundsDiagonal,
-BoundsFromCenter, mse }
+BoundsFromCenter, mse, BeaconFromPoint }
