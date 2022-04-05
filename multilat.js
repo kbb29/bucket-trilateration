@@ -80,7 +80,7 @@ RandomPointGenerator.prototype.reset = function() {
 
 
 const MultiLat = function(searchBounds, beaconPoints, limitBuckets, options) {
-    options ||= {}
+    options = options || {}
     let numPoints = options.numPoints || 100000
     this.beaconPoints = beaconPoints
     this.distanceBuckets = beaconPoints.map(x => new Array())
@@ -196,7 +196,7 @@ MultiLat.prototype.multilaterate = function(beacons, options) {
         throw `the beacons passed contain a limit bucket (${beacons[badIndex].limits}) that was not specified when MultiLat was constructed`
     }
 
-    options ||= {}
+    options = options || {}
     plotIntersection = options.plotIntersection
     nullHandler = options.nullHandler
     //END input validation

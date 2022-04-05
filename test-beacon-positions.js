@@ -34,7 +34,7 @@ var calculateErrorStats = function(errors) {
     return {maxError: maxE, avgError: totE / nonNull.length, totalCount: errors.length, nullCount: errors.length - nonNull.length}
 }
 
-const plotAllCentroids = function(searchBounds, beaconPoints, testGen, doPlot) {
+const plotAllCentroids = function(searchBounds, beaconPoints, doPlot) {
 
     startt = Date.now()
     ml = new multilat.MultiLat(searchBounds, beaconPoints, obfuscationBuckets, {numPoints: 10000})
@@ -44,6 +44,7 @@ const plotAllCentroids = function(searchBounds, beaconPoints, testGen, doPlot) {
     console.log(`init ${initt - startt}ms, grid ${endt - initt}ms`)
 
     if(doPlot) {
+        console.log('plotting centroids')
         plot.drawCentroids(centroids, ml.beaconPoints)
     }
 
