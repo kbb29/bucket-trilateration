@@ -1,8 +1,11 @@
 {
+  "name": "bucket-trilateration",
+  "version": "0.0.1",
   "dependencies": {
     "great-circle-distance": "^1.0.2",
     "mathjs": "^10.4.2",
     "mustache": "^4.2.0",
     "plotly": "^1.0.6"
-  }
+  },
+  "main": "./multilat.js"
 }

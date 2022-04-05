@@ -2,6 +2,11 @@ const utils = require('./utils.js')
 const plot  = require('./plot.js')
 const multilat = require('./multilat.js')
 
+//if you npm install this directory, you can change these to
+//const utils = require('bucket-trilateration/utils')
+//const plot  = require('bucket-trilateration/plot')
+//const multilat = require('bucket-trilateration')
+
 const boundsCenter = new utils.Point(45, 45)
 const searchBounds = utils.BoundsFromCenter(boundsCenter, 10000)
 

@@ -1,11 +1,12 @@
 var Mustache = require('mustache');
 const fs = require('fs');
 const { exec } = require("child_process");
+const path = require('path')
 
 
 var templateStr;
 try {
-    templateStr = fs.readFileSync('./map.mustache', 'utf8')
+    templateStr = fs.readFileSync(path.join(__dirname, 'map.mustache'), 'utf8')
     //console.log(templateStr)
   } catch (err) {
     console.error(err)
