@@ -1,3 +1,5 @@
+![bucket trilateration](images/trilat.png)
+
 # bucket-trilateration
 
 This is a node module for triangulating/trilaterating/multilaterating an object when you know how far it is from two or more beacons of known location *and* the distances are obfuscated into buckets eg. 0m-500m, 500m-1000m etc.
